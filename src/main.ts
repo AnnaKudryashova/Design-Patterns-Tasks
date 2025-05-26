@@ -29,6 +29,9 @@ if (isTaskGroup(sprint1)) {
     sprint1.addTask(task2);
 }
 
+const task3 = TaskFlyweightFactory.getTask('4', 'Add unit tests', 'Create tests to cover new functionality', jane);
+const task4 = TaskFlyweightFactory.getTask('5', 'Add unit tests', 'Create tests to cover new functionality', jane);
+
 console.log('Flyweight cache size:', TaskFlyweightFactory.getCacheSize()); // Should be 1
 
 const assignTask1 = new AssignTaskCommand(task1, tom, taskManager);
@@ -45,6 +48,8 @@ commandInvoker.undoLastCommand();
 console.log('\nSimple Tasks Details:\n');
 console.log(task1.getDetails());
 console.log(task2.getDetails());
+console.log(task3.getDetails());
+console.log(task4.getDetails());
 
 console.log('\nGroup Details:\n');
 console.log(sprint1.getDetails());
