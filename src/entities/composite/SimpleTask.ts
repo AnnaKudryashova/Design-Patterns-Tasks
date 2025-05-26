@@ -1,5 +1,5 @@
 import { TaskComponent } from '../../core/tasks/TaskComponent';
-import { User } from '../../entities/User';
+import { User } from '../User';
 import { TaskStatus } from '../../types/taskTypes';
 
 export class SimpleTask implements TaskComponent {
@@ -13,7 +13,8 @@ export class SimpleTask implements TaskComponent {
     ) {}
 
     getDetails(): string {
-        return `[${this.id}] ${this.title} (${this.status})` +
-               (this.assignee ? ` → ${this.assignee.getFullName()}` : '');
+        return `id: ${this.id} ${this.title} (${this.status})\n` +
+                `reporter: ${this.reporter.getFullName()}\n` +
+               (this.assignee ? `assignee: ${this.assignee.getFullName()}\n` : '');
     }
 }

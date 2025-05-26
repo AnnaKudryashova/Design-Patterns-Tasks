@@ -1,8 +1,8 @@
 import { TaskComponent } from '../../core/tasks/TaskComponent';
 import { User } from '../../entities/User';
 import { TaskType } from '../../types/taskTypes';
-import { SimpleTask } from '../composite/SimpleTask';
-import { TaskGroup } from '../composite/TaskGroup';
+import { SimpleTask } from '../../entities/composite/SimpleTask';
+import { TaskGroup } from '../../entities/composite/TaskGroup';
 
 export class TaskFactory {
     static createTask(

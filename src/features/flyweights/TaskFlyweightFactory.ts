@@ -1,6 +1,6 @@
 import { TaskComponent } from "../../core/tasks/TaskComponent";
 import { User } from "../../entities/User";
-import { SimpleTask } from "../composite/SimpleTask";
+import { SimpleTask } from "../../entities/composite/SimpleTask";
 
 
 export class TaskFlyweightFactory {

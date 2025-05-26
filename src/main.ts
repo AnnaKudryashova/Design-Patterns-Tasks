@@ -23,21 +23,19 @@ const task1 = TaskFactory.createTask('simple', '1', 'Implement login', 'Create l
 const task2 = TaskFactory.createTask('simple', '2', 'Add validation', 'Add form validation', jane);
 const sprint1 = TaskFactory.createTask('group', '3', 'Sprint 1', 'First sprint tasks', jane);
 
-const task3 = TaskFlyweightFactory.getTask('4', 'Implement login', 'Create login functionality', jane);
-const task4 = TaskFlyweightFactory.getTask('5', 'Implement login', 'Create login functionality', jane);
-
 console.log('Flyweight cache size:', TaskFlyweightFactory.getCacheSize()); // Should be 1
 
-const updateStatusCommand = new UpdateTaskStatusCommand(task1, 'IN_PROGRESS', taskManager);
-commandInvoker.executeCommand(updateStatusCommand);
+const assignTask1 = new AssignTaskCommand(task1, tom, taskManager);
+commandInvoker.executeCommand(assignTask1);
 
-const assignCommand = new AssignTaskCommand(task1, tom, taskManager);
-commandInvoker.executeCommand(assignCommand);
+const updateStatusTask1 = new UpdateTaskStatusCommand(task1, 'IN_PROGRESS', taskManager);
+commandInvoker.executeCommand(updateStatusTask1);
+
+const assignTask2 = new AssignTaskCommand(task2, tom, taskManager);
+commandInvoker.executeCommand(assignTask2);
 
 commandInvoker.undoLastCommand();
 
-console.log('\nTask Details:');
+console.log('\nTasks Details:\n');
 console.log(task1.getDetails());
 console.log(task2.getDetails());
-console.log(task3.getDetails());
-console.log(task4.getDetails());
