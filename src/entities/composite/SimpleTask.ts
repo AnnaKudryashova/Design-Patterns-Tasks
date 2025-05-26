@@ -17,4 +17,8 @@ export class SimpleTask implements TaskComponent {
                 `reporter: ${this.reporter.getFullName()}\n` +
                (this.assignee ? `assignee: ${this.assignee.getFullName()}\n` : '');
     }
+
+    isComposite(): boolean {
+        return false;
+    }
 }

@@ -26,4 +26,8 @@ export class TaskGroup implements TaskComponent {
         const taskDetails = this.tasks.map(task => task.getDetails()).join('\n');
         return `Group: ${this.title}\n${taskDetails}`;
     }
+
+    public isComposite(): boolean {
+        return true;
+    }
 }

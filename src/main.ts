@@ -6,6 +6,7 @@ import { TaskManager } from "./features/services/TaskManager.service";
 import { AssignTaskCommand } from "./features/commands/AssignTaskCommand";
 import { TaskCommandInvoker } from "./features/commands/TaskCommandInvoker";
 import { UpdateTaskStatusCommand } from "./features/commands/UpdateTaskStatusCommand";
+import { isTaskGroup } from "./features/utils/TaskUtils";
 
 const tom = new User('1', 'Tom', 'Lee', 'tom_lee@test.com', 'DEVELOPER');
 const jane = new User('2', 'Jane', 'Johnson', 'jane_johnson@test.com', 'MANAGER');
@@ -23,6 +24,11 @@ const task1 = TaskFactory.createTask('simple', '1', 'Implement login', 'Create l
 const task2 = TaskFactory.createTask('simple', '2', 'Add validation', 'Add form validation', jane);
 const sprint1 = TaskFactory.createTask('group', '3', 'Sprint 1', 'First sprint tasks', jane);
 
+if (isTaskGroup(sprint1)) {
+    sprint1.addTask(task1);
+    sprint1.addTask(task2);
+}
+
 console.log('Flyweight cache size:', TaskFlyweightFactory.getCacheSize()); // Should be 1
 
 const assignTask1 = new AssignTaskCommand(task1, tom, taskManager);
@@ -36,6 +42,9 @@ commandInvoker.executeCommand(assignTask2);
 
 commandInvoker.undoLastCommand();
 
-console.log('\nTasks Details:\n');
+console.log('\nSimple Tasks Details:\n');
 console.log(task1.getDetails());
 console.log(task2.getDetails());
+
+console.log('\nGroup Details:\n');
+console.log(sprint1.getDetails());

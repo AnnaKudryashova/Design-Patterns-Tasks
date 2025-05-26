@@ -9,4 +9,5 @@ export interface TaskComponent {
     assignee?: User;
     reporter: User;
     getDetails(): string;
+    isComposite(): boolean;
 }
