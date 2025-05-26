@@ -20,17 +20,17 @@ taskManager.addObserver(slackNotifier);
 
 const commandInvoker = new TaskCommandInvoker();
 
-const task1 = TaskFactory.createTask('simple', '1', 'Implement login', 'Create login functionality', jane);
-const task2 = TaskFactory.createTask('simple', '2', 'Add validation', 'Add form validation', jane);
-const sprint1 = TaskFactory.createTask('group', '3', 'Sprint 1', 'First sprint tasks', jane);
+const task1 = TaskFactory.createTask('simple', 'Implement login', 'Create login functionality', jane);
+const task2 = TaskFactory.createTask('simple', 'Add validation', 'Add form validation', jane);
+const sprint1 = TaskFactory.createTask('group', 'Sprint 1', 'First sprint tasks', jane);
 
 if (isTaskGroup(sprint1)) {
     sprint1.addTask(task1);
     sprint1.addTask(task2);
 }
 
-const task3 = TaskFlyweightFactory.getTask('4', 'Add unit tests', 'Create tests to cover new functionality', jane);
-const task4 = TaskFlyweightFactory.getTask('5', 'Add unit tests', 'Create tests to cover new functionality', jane);
+const task3 = TaskFlyweightFactory.getTask('Add unit tests', 'Create tests to cover new functionality', jane);
+const task4 = TaskFlyweightFactory.getTask('Add unit tests', 'Create tests to cover new functionality', jane);
 
 console.log('Flyweight cache size:', TaskFlyweightFactory.getCacheSize()); // Should be 1
 
