@@ -1,14 +1,14 @@
 
-import { TaskCommand } from '../../core/commands/TaskCommand.interface';
-import { Task } from '../../core/tasks/Task.interface';
-import { User } from '../../domain/entities/User';
-import { TaskManager } from '../../features/task-management/services/TaskManager.service';
+import { TaskCommand } from '../../core/commands/TaskCommand';
+import { TaskComponent } from '../../core/tasks/TaskComponent';
+import { User } from '../../entities/User';
+import { TaskManager } from '../services/TaskManager.service';
 
 export class AssignTaskCommand implements TaskCommand {
     private previousAssignee?: User;
 
     constructor(
-        private task: Task,
+        private task: TaskComponent,
         private newAssignee: User,
         private taskManager: TaskManager
     ) {
@@ -16,9 +16,10 @@ export class AssignTaskCommand implements TaskCommand {
     }
 
     execute(): void {
+        console.log('----------Assigning Task----------\n');
         this.task.assignee = this.newAssignee;
         this.taskManager.notifyObservers(
-            this.task.id,
+            this.task,
             this.task.status,
             this.newAssignee
         );
@@ -27,7 +28,7 @@ export class AssignTaskCommand implements TaskCommand {
     undo(): void {
         this.task.assignee = this.previousAssignee;
         this.taskManager.notifyObservers(
-            this.task.id,
+            this.task,
             this.task.status,
             this.previousAssignee
         );

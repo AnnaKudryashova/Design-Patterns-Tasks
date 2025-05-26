@@ -1,6 +1,5 @@
-import { TaskCommand } from "../../core/commands/TaskCommand.interface";
+import { TaskCommand } from "../../core/commands/TaskCommand";
 
-// Command invoker
 export class TaskCommandInvoker {
     private commandHistory: TaskCommand[] = [];
 

@@ -1,8 +1,8 @@
-import { Task } from '../../../core/tasks/Task.interface';
-import { User } from '../../../domain/entities/User';
-import { TaskStatus } from '../../../shared/types/task.types';
-// SimpleTask (Leaf in Composite pattern)
-export class SimpleTask implements Task {
+import { TaskComponent } from '../../core/tasks/TaskComponent';
+import { User } from '../../entities/User';
+import { TaskStatus } from '../../types/taskTypes';
+
+export class SimpleTask implements TaskComponent {
     constructor(
         public id: string,
         public title: string,

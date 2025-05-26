@@ -1,17 +1,18 @@
-import { Task } from '../../../core/tasks/Task.interface';
-import { User } from '../../../domain/entities/User';
-import { SimpleTask } from '../models/SimpleTask.model';
-import { TaskGroup } from '../models/TaskGroup.model';
+import { TaskComponent } from '../../core/tasks/TaskComponent';
+import { User } from '../../entities/User';
+import { TaskType } from '../../types/taskTypes';
+import { SimpleTask } from '../composite/SimpleTask';
+import { TaskGroup } from '../composite/TaskGroup';
 
 export class TaskFactory {
     static createTask(
-        type: 'simple' | 'group',
+        type: TaskType,
         id: string,
         title: string,
         description: string,
         reporter: User,
         assignee?: User
-    ): Task {
+    ): TaskComponent {
         switch (type) {
             case 'simple':
                 return new SimpleTask(id, title, description, reporter, 'TODO', assignee);

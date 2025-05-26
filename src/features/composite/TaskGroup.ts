@@ -1,9 +1,9 @@
-import { Task } from '../../../core/tasks/Task.interface';
-import { User } from '../../../domain/entities/User';
-import { TaskStatus } from '../../../shared/types/task.types';
-// TaskGroup (Composite in Composite pattern)
-export class TaskGroup implements Task {
-    private tasks: Task[] = [];
+import { TaskComponent } from '../../core/tasks/TaskComponent';
+import { User } from '../../entities/User';
+import { TaskStatus } from '../../types/taskTypes';
+
+export class TaskGroup implements TaskComponent {
+    private tasks: TaskComponent[] = [];
 
     constructor(
         public id: string,
@@ -14,7 +14,7 @@ export class TaskGroup implements Task {
         public assignee?: User
     ) {}
 
-    addTask(task: Task): void {
+    addTask(task: TaskComponent): void {
         this.tasks.push(task);
     }
 

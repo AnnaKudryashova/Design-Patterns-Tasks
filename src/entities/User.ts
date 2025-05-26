@@ -1,4 +1,4 @@
-import { UserRole } from "../../shared/types/task.types";
+import { UserRole } from "../types/taskTypes";
 
 export class User {
     constructor(

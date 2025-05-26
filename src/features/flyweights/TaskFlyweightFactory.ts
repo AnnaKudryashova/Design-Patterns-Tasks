@@ -1,12 +1,12 @@
-import { Task } from "../../../core/tasks/Task.interface";
-import { User } from "../../../domain/entities/User";
-import { SimpleTask } from "../models/SimpleTask.model";
+import { TaskComponent } from "../../core/tasks/TaskComponent";
+import { User } from "../../entities/User";
+import { SimpleTask } from "../composite/SimpleTask";
 
 
 export class TaskFlyweightFactory {
-    private static taskCache: Map<string, Task> = new Map();
+    private static taskCache: Map<string, TaskComponent> = new Map();
 
-    static getTask(id: string, title: string, description: string, reporter: User, assignee?: User): Task {
+    static getTask(id: string, title: string, description: string, reporter: User, assignee?: User): TaskComponent {
         const key = `${title}-${description}`;
 
         if (!this.taskCache.has(key)) {
